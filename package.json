@@ -4,7 +4,10 @@
   "description": "> Pomodoro Timer, 단어장 등을 포함한 생산성 Application",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --hot --host 0.0.0.0"
+    "start": "pm2 start build/server.js",
+    "stop": "pm2 stop build/server.js",
+    "clean": "rm -rf build public/*.bundle.js",
+    "build": "babel server --out-dir build && webpack"
   },
   "repository": {
     "type": "git",
@@ -17,6 +20,8 @@
   },
   "homepage": "https://github.com/cliche90/task_kicker#readme",
   "dependencies": {
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
     "path": "^0.12.7",
     "react": "^16.0.0",
     "react-dom": "^16.0.0"
@@ -26,6 +31,7 @@
     "babel-loader": "^7.1.2",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "react-hot-loader": "^3.1.1",
     "webpack": "^3.8.1",
     "webpack-dev-server": "^2.9.3"
   }

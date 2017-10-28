@@ -1,16 +1,19 @@
 const path = require('path');
 
 module.exports = {
-    entry: './src/index.js',
+    entry: {
+        index: './src/entry/index.js',
+        login: './src/entry/login.js'
+    },
 
     output: {
         path: path.join(__dirname, '/public'),
-        filename: 'bundle.js'
+        filename: '[name].bundle.js'
     },
 
     devServer: {
         inline: true,
-        port: 7777,
+        port: 3000,
         contentBase: path.join(__dirname, '/public/')
     },
 
