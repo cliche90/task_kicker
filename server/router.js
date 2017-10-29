@@ -1,7 +1,8 @@
 import express from 'express';
 import path from 'path';
 import passport from 'passport';
-import { Strategy } from 'passport-github2';
+
+let GitHubStrategy = require('passport-github2').Strategy;
 
 module.exports = (app) => {
 
@@ -9,17 +10,18 @@ module.exports = (app) => {
     app.use(passport.session());
 
     const router = express.Router();
-    const GitHubStrategy = Strategy;
 
     // passport.js start
-    let GITHUB_CLIENT_ID = "cliche90@naver.com";
-    let GITHUB_CLIENT_SECRET = "a";
+    let GITHUB_CLIENT_ID = "";
+    let GITHUB_CLIENT_SECRET = "";
 
     passport.serializeUser((user, done) => {
+        console.log('serializeUser', user);
         done(null, user);
     });
 
     passport.deserializeUser((obj, done) => {
+        console.log('deserializeUser', obj)
         done(null, obj);
     });
 
@@ -27,7 +29,7 @@ module.exports = (app) => {
         {
             clientID: GITHUB_CLIENT_ID,
             clientSecret: GITHUB_CLIENT_SECRET,
-            callbackURL: "http://localhost:3000/auth/github/callback"
+            callbackURL: "/auth/github/callback"
         },
         (accessToken, refreshToken, profile, done) => {
             process.nextTick(()=> {
@@ -36,13 +38,15 @@ module.exports = (app) => {
         }
     ));
     // passport.js end */
-
     
     // Routing
-    router.get('/'
-             , (req, res) => res.render('index.html'));
     router.get('/login'
              , (req, res) => res.render('login.html'));
+    router.get('/auth/logout'
+             , (req, res) => {
+                 req.logout();
+                 req.redired('/');
+             });
     router.get('/auth/github'
              , passport.authenticate('github', { scope: [ 'user:email' ]})
              , (req, res) => {});

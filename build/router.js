@@ -12,9 +12,9 @@ var _passport = require('passport');
 
 var _passport2 = _interopRequireDefault(_passport);
 
-var _passportGithub = require('passport-github2');
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var GitHubStrategy = require('passport-github2').Strategy;
 
 module.exports = function (app) {
 
@@ -22,24 +22,25 @@ module.exports = function (app) {
     app.use(_passport2.default.session());
 
     var router = _express2.default.Router();
-    var GitHubStrategy = _passportGithub.Strategy;
 
     // passport.js start
-    var GITHUB_CLIENT_ID = "cliche90@naver.com";
-    var GITHUB_CLIENT_SECRET = "a";
+    var GITHUB_CLIENT_ID = "";
+    var GITHUB_CLIENT_SECRET = "";
 
     _passport2.default.serializeUser(function (user, done) {
+        console.log('serializeUser', user);
         done(null, user);
     });
 
     _passport2.default.deserializeUser(function (obj, done) {
+        console.log('deserializeUser', obj);
         done(null, obj);
     });
 
     _passport2.default.use(new GitHubStrategy({
         clientID: GITHUB_CLIENT_ID,
         clientSecret: GITHUB_CLIENT_SECRET,
-        callbackURL: "http://localhost:3000/auth/github/callback"
+        callbackURL: "/auth/github/callback"
     }, function (accessToken, refreshToken, profile, done) {
         process.nextTick(function () {
             return done(null, profile);
@@ -47,13 +48,13 @@ module.exports = function (app) {
     }));
     // passport.js end */
 
-
     // Routing
-    router.get('/', function (req, res) {
-        return res.render('index.html');
-    });
     router.get('/login', function (req, res) {
         return res.render('login.html');
+    });
+    router.get('/auth/logout', function (req, res) {
+        req.logout();
+        req.redired('/');
     });
     router.get('/auth/github', _passport2.default.authenticate('github', { scope: ['user:email'] }), function (req, res) {});
     router.get('/auth/github/callback', _passport2.default.authenticate('github', { failureRedirect: '/login' }), function (req, res) {
