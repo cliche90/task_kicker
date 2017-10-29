@@ -21210,12 +21210,26 @@ var App = function (_React$Component) {
     }
 
     _createClass(App, [{
-        key: 'render',
+        key: "render",
         value: function render() {
             return _react2.default.createElement(
-                'h1',
+                "div",
                 null,
-                ' Hello React Skeleton '
+                _react2.default.createElement(
+                    "h1",
+                    null,
+                    " Hello React Skeleton "
+                ),
+                _react2.default.createElement(
+                    "a",
+                    { href: "/" },
+                    "home"
+                ),
+                _react2.default.createElement(
+                    "a",
+                    { href: "/login" },
+                    " login "
+                )
             );
         }
     }]);

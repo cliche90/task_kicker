@@ -1,12 +1,17 @@
 import React from 'react';
 
-class LoginTest extends React.Component {
+class LoginCard extends React.Component {
     render() {
         return (
-            <h1>test</h1>
+            // <form id="login" name="login" action="/login" method="post">
+            //     <input type="text" name="username" />
+            //     <input type="password" name="password" />
+            //     <input type="submit" value="login" />
+            // </form>
+            <a href="/auth/github">Login with Github</a>
         );
     }
 }
 
-export { LoginTest };
+export { LoginCard };
 

@@ -26,7 +26,10 @@ app.set('view engine', 'ejs');
 app.engine('html', _ejs2.default.renderFile);
 
 app.use(_express2.default.static(_path2.default.join(__dirname, '/../public/')));
-app.use('/', _router2.default);
+
+var router_with_app = (0, _router2.default)(app);
+app.use('/', router_with_app);
+
 app.listen(port, function () {
   return console.log('listen on ' + port);
 });

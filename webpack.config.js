@@ -2,8 +2,8 @@ const path = require('path');
 
 module.exports = {
     entry: {
-        index: './src/entry/index.js',
-        login: './src/entry/login.js'
+        index: './src/render/index.js',
+        login: './src/render/login.js'
     },
 
     output: {

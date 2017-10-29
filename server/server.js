@@ -11,5 +11,8 @@ app.set('view engine', 'ejs');
 app.engine('html', ejs.renderFile);
 
 app.use(express.static(path.join(__dirname, '/../public/')));
-app.use('/', router);
+
+let router_with_app = router(app);
+app.use('/', router_with_app);
+
 app.listen(port, () => console.log('listen on ' + port));

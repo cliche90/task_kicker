@@ -21176,8 +21176,8 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var loginEl = document.getElementById('login');
-_reactDom2.default.render(_react2.default.createElement(LC.LoginTest, null), loginEl);
+var rootEl = document.getElementById('root');
+_reactDom2.default.render(_react2.default.createElement(LC.LoginCard, null), rootEl);
 
 /***/ }),
 /* 34 */
@@ -21189,7 +21189,7 @@ _reactDom2.default.render(_react2.default.createElement(LC.LoginTest, null), log
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.LoginTest = undefined;
+exports.LoginCard = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -21205,30 +21205,37 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var LoginTest = function (_React$Component) {
-    _inherits(LoginTest, _React$Component);
+var LoginCard = function (_React$Component) {
+    _inherits(LoginCard, _React$Component);
 
-    function LoginTest() {
-        _classCallCheck(this, LoginTest);
+    function LoginCard() {
+        _classCallCheck(this, LoginCard);
 
-        return _possibleConstructorReturn(this, (LoginTest.__proto__ || Object.getPrototypeOf(LoginTest)).apply(this, arguments));
+        return _possibleConstructorReturn(this, (LoginCard.__proto__ || Object.getPrototypeOf(LoginCard)).apply(this, arguments));
     }
 
-    _createClass(LoginTest, [{
-        key: 'render',
+    _createClass(LoginCard, [{
+        key: "render",
         value: function render() {
-            return _react2.default.createElement(
-                'h1',
-                null,
-                'test'
+            return (
+                // <form id="login" name="login" action="/login" method="post">
+                //     <input type="text" name="username" />
+                //     <input type="password" name="password" />
+                //     <input type="submit" value="login" />
+                // </form>
+                _react2.default.createElement(
+                    "a",
+                    { href: "/auth/github" },
+                    "Login with Github"
+                )
             );
         }
     }]);
 
-    return LoginTest;
+    return LoginCard;
 }(_react2.default.Component);
 
-exports.LoginTest = LoginTest;
+exports.LoginCard = LoginCard;
 
 /***/ })
 /******/ ]);
