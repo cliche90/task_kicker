@@ -1,12 +1,25 @@
 import React from 'react';
 
+const styleGroup = {
+    titleText: {
+        color: "white"
+    },
+    loginText: {
+        color: "#FF9900"
+    }
+};
+
 class App extends React.Component {
     render() {
         return (
             <div>
-                <h1> Hello React Skeleton </h1>
-                <a href="/">home</a>
-                <a href="/login"> login </a>
+                <div>
+                    <h1 style={ styleGroup.titleText }> Hello React Skeleton </h1>
+                    <a href="/">home</a>
+                    <h3>
+                        <a href="/login" style={ styleGroup.loginText }>login</a>
+                    </h3>
+                </div>
             </div>
         );
     }

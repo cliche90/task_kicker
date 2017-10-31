@@ -12,8 +12,8 @@ module.exports = (app) => {
     const router = express.Router();
 
     // passport.js start
-    let GITHUB_CLIENT_ID = "";
-    let GITHUB_CLIENT_SECRET = "";
+    let GITHUB_CLIENT_ID = "a";
+    let GITHUB_CLIENT_SECRET = "a";
 
     passport.serializeUser((user, done) => {
         console.log('serializeUser', user);

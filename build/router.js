@@ -24,8 +24,8 @@ module.exports = function (app) {
     var router = _express2.default.Router();
 
     // passport.js start
-    var GITHUB_CLIENT_ID = "";
-    var GITHUB_CLIENT_SECRET = "";
+    var GITHUB_CLIENT_ID = "a";
+    var GITHUB_CLIENT_SECRET = "a";
 
     _passport2.default.serializeUser(function (user, done) {
         console.log('serializeUser', user);
